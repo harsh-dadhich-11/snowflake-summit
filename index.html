@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>BOT Consulting × Snowflake Summit 2026</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --teal-dark: #183944;
+            --teal: #215052;
+            --teal-mid: #2a8a8a;
+            --cyan: #42C3D6;
+            --cyan-light: #7dd8e5;
+            --orange: #F16522;
+            --orange-light: #f8a370;
+            --orange-glow: rgba(241, 101, 34, .12);
+            --charcoal: #2C2C2C;
+            --ink: #15171F;
+            --cream: #faf5ee;
+            --cream2: #f5efe6;
+            --white: #ffffff;
+            --text: #3a3a3a;
+            --text-dim: #6b7280;
+            --border: rgba(24, 57, 68, .08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased
+        }
+
+        /* --- REVEALS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity .85s cubic-bezier(.16, 1, .3, 1), transform .85s cubic-bezier(.16, 1, .3, 1)
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .reveal-d1 {
+            transition-delay: .12s
+        }
+
+        .reveal-d2 {
+            transition-delay: .24s
+        }
+
+        .reveal-d3 {
+            transition-delay: .36s
+        }
+
+        .reveal-d4 {
+            transition-delay: .48s
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(16px);
+            background: rgba(250, 245, 238, .85);
+            border-bottom: 1px solid var(--border);
+            transition: all .3s
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: .08em;
+            color: var(--teal-dark);
+            text-transform: uppercase;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .nav-logo .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--cyan)
+        }
+
+        .logo-img {
+            height: 28px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center
+        }
+
+        .nav-links a {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--teal-dark);
+            text-decoration: none;
+            letter-spacing: .02em;
+            transition: color .2s
+        }
+
+        .nav-links a:hover {
+            color: var(--orange)
+        }
+
+        .nav-cta {
+            background: var(--orange);
+            color: #fff;
+            padding: .55rem 1.4rem;
+            border-radius: 6px;
+            font-size: .82rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all .3s
+        }
+
+        .nav-cta:hover {
+            background: #d4541a;
+            transform: translateY(-1px)
+        }
+
+        @media(max-width:768px) {
+            nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .nav-logo {
+                gap: 0.6rem !important;
+            }
+
+            .logo-img {
+                height: 20px !important;
+            }
+        }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem clamp(2rem, 6vw, 6rem) 4rem;
+            position: relative;
+            overflow: hidden
+        }
+
+        /* BOT gradient blurs — teal/cyan top-right, orange bottom-left like Year in Review */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -15%;
+            right: -10%;
+            width: 70vw;
+            height: 70vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(66, 195, 214, .25) 0%, rgba(66, 195, 214, .08) 40%, transparent 70%);
+            animation: drift 14s ease-in-out infinite;
+            pointer-events: none
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -15%;
+            width: 60vw;
+            height: 60vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(241, 101, 34, .15) 0%, rgba(241, 101, 34, .05) 40%, transparent 70%);
+            animation: drift 18s ease-in-out infinite 4s;
+            pointer-events: none
+        }
+
+        @keyframes drift {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1)
+            }
+
+            50% {
+                transform: translate(15px, -10px) scale(1.03)
+            }
+        }
+
+        .hero-content {
+            max-width: 750px;
+            position: relative;
+            z-index: 1
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .4rem 1rem;
+            background: rgba(66, 195, 214, .1);
+            border: 1px solid rgba(66, 195, 214, .25);
+            border-radius: 100px;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--teal-mid);
+            margin-bottom: 1.75rem;
+            animation: fade-in .8s .2s both
+        }
+
+        .hero-badge .pulse {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--orange);
+            animation: blink 2s infinite
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .3
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-15px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 5.5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--teal-dark);
+            animation: slide-up .9s .3s both
+        }
+
+        .hero h1 .accent {
+            color: var(--orange)
+        }
+
+        .hero h1 .cyan-accent {
+            color: var(--cyan);
+            position: relative
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(25px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .hero-sub {
+            font-size: clamp(.95rem, 1.8vw, 1.15rem);
+            line-height: 1.75;
+            color: var(--text-dim);
+            max-width: 580px;
+            margin-top: 1.25rem;
+            font-weight: 400;
+            animation: slide-up .9s .55s both
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: .75rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            animation: slide-up .9s .75s both
+        }
+
+        .btn {
+            display: inline-block;
+            padding: .8rem 1.8rem;
+            border-radius: 7px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: .88rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all .3s cubic-bezier(.16, 1, .3, 1);
+            border: none;
+            letter-spacing: .01em
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(241, 101, 34, .2)
+        }
+
+        .btn-primary:hover {
+            background: #d4541a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(241, 101, 34, .3)
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--teal-dark);
+            border: 1.5px solid var(--teal-dark)
+        }
+
+        .btn-outline:hover {
+            background: var(--teal-dark);
+            color: #fff
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: clamp(4rem, 8vw, 7rem) clamp(2rem, 6vw, 6rem);
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .full-width {
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0
+        }
+
+        .section-label {
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: .75rem
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--teal-dark);
+            max-width: 650px;
+            margin-bottom: 1rem
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+            max-width: 560px;
+            font-weight: 400
+        }
+
+        /* --- EVENT BANNER --- */
+        .event-banner {
+            background: linear-gradient(135deg, var(--teal-dark), var(--teal), var(--teal-mid));
+            border-radius: 20px;
+            padding: clamp(2.5rem, 5vw, 4rem);
+            margin: 0 clamp(2rem, 6vw, 6rem);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center
+        }
+
+        @media(max-width:768px) {
+            .event-banner {
+                grid-template-columns: 1fr;
+                margin: 0 1.5rem
+            }
+        }
+
+        .event-banner::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(66, 195, 214, .15), transparent 60%);
+            pointer-events: none
+        }
+
+        /* circuit pattern overlay */
+        .event-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: .04;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0v20M30 40v20M0 30h20M40 30h60M30 30m-4 0a4 4 0 108 0 4 4 0 10-8 0' fill='none' stroke='%2342C3D6' stroke-width='1'/%3E%3C/svg%3E")
+        }
+
+        .event-banner h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: .75rem;
+            line-height: 1.2
+        }
+
+        .event-banner .sub {
+            color: rgba(255, 255, 255, .7);
+            font-size: .95rem;
+            line-height: 1.7
+        }
+
+        .event-details {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+            margin-top: 1.25rem
+        }
+
+        .event-detail {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .85);
+            font-weight: 500
+        }
+
+        .event-detail .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, .1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            flex-shrink: 0
+        }
+
+        .event-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start
+        }
+
+        .event-right p {
+            color: rgba(255, 255, 255, .7);
+            font-size: .9rem;
+            line-height: 1.7
+        }
+
+        /* --- WHY CARDS --- */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-top: 2.5rem
+        }
+
+        @media(max-width:768px) {
+            .why-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .why-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            transition: all .4s cubic-bezier(.16, 1, .3, 1);
+            position: relative;
+            overflow: hidden
+        }
+
+        .why-card:hover {
+            border-color: rgba(66, 195, 214, .3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(24, 57, 68, .06)
+        }
+
+        .why-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--teal-dark);
+            margin-bottom: .5rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem
+        }
+
+        .why-card p {
+            font-size: .9rem;
+            line-height: 1.7;
+            color: var(--text-dim)
+        }
+
+        .card-accent {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0
+        }
+
+        /* Bottom stat bar on cards */
+        .card-stat {
+            margin-top: 1rem;
+            padding-top: .75rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: baseline;
+            gap: .35rem
+        }
+
+        .card-stat .num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--teal-dark), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .card-stat .label {
+            font-size: .75rem;
+            color: var(--text-dim);
+            font-weight: 500
+        }
+
+        /* --- STATS STRIP --- */
+        .stats-section {
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border)
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem clamp(2rem, 6vw, 6rem)
+        }
+
+        @media(max-width:768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        .stat {
+            text-align: center
+        }
+
+        .stat-num {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--teal-dark);
+            line-height: 1;
+            margin-bottom: .25rem
+        }
+
+        .stat-num .highlight {
+            background: linear-gradient(135deg, var(--orange), var(--orange-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .stat-label {
+            font-size: .75rem;
+            color: var(--text-dim);
+            font-weight: 500;
+            letter-spacing: .03em
+        }
+
+        /* --- PROOF --- */
+        .proof-section {
+            position: relative
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+            align-items: start
+        }
+
+        @media(max-width:768px) {
+            .proof-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .proof-narrative {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-dim)
+        }
+
+        .proof-narrative strong {
+            color: var(--teal-dark);
+            font-weight: 700
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            padding-left: 1.75rem
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--cyan), var(--orange), var(--teal-dark))
+        }
+
+        .tl-item {
+            position: relative;
+            padding-bottom: 1.5rem
+        }
+
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: .4rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2.5px solid var(--cyan);
+            background: var(--cream);
+            z-index: 1
+        }
+
+        .tl-item:nth-child(2)::before {
+            border-color: var(--orange)
+        }
+
+        .tl-item:last-child::before {
+            border-color: var(--teal-dark);
+            background: var(--teal-dark)
+        }
+
+        .tl-phase {
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: .15rem
+        }
+
+        .tl-text {
+            font-size: .88rem;
+            line-height: 1.65;
+            color: var(--text-dim)
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2.5rem
+        }
+
+        .testimonial {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem 2rem 2rem 2.5rem;
+            position: relative;
+            transition: all .3s
+        }
+
+        .testimonial:hover {
+            box-shadow: 0 8px 30px rgba(24, 57, 68, .06)
+        }
+
+        .testimonial::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            border-radius: 14px 0 0 14px
+        }
+
+        .testimonial:nth-child(1)::before {
+            background: var(--cyan)
+        }
+
+        .testimonial:nth-child(2)::before {
+            background: var(--orange)
+        }
+
+        .testimonial:nth-child(3)::before {
+            background: var(--teal-dark)
+        }
+
+        .testimonial blockquote {
+            font-size: .95rem;
+            line-height: 1.75;
+            color: var(--text);
+            font-style: italic;
+            font-weight: 400
+        }
+
+        .testimonial cite {
+            display: block;
+            margin-top: .75rem;
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--orange);
+            font-style: normal
+        }
+
+        /* --- HOSTS --- */
+        .hosts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem
+        }
+
+        @media(max-width:768px) {
+            .hosts-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .host-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all .4s
+        }
+
+        .host-card:hover {
+            border-color: rgba(66, 195, 214, .3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(24, 57, 68, .06)
+        }
+
+        .host-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #fff
+        }
+
+        .host-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--teal-dark)
+        }
+
+        .host-card .role {
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--orange);
+            margin: .25rem 0 1rem;
+            letter-spacing: .02em
+        }
+
+        .host-card p {
+            font-size: .88rem;
+            line-height: 1.7;
+            color: var(--text-dim)
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            text-align: center;
+            padding: clamp(5rem, 10vw, 8rem) 2rem;
+            position: relative;
+            overflow: hidden
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(66, 195, 214, .1), transparent 60%);
+            pointer-events: none
+        }
+
+        .cta-section .section-title {
+            margin: 0 auto 1rem;
+            text-align: center;
+            max-width: 700px
+        }
+
+        .cta-section .section-desc {
+            margin: 0 auto 2rem;
+            text-align: center;
+            max-width: 500px
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            font-size: .72rem;
+            color: var(--text-dim);
+            letter-spacing: .04em;
+            font-weight: 500
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo" style="gap: 1rem;">
+            <a href="https://www.botconsulting.io/" target="_blank" rel="noopener noreferrer"
+                style="display: flex; align-items: center;">
+                <img src="images/bot-logo.svg" alt="BOT Consulting" class="logo-img">
+            </a>
+            <span style="color: var(--text-dim); font-weight: 400; font-size: 1.2rem; line-height: 1;">×</span>
+            <a href="https://www.snowflake.com/en/summit/" target="_blank" rel="noopener noreferrer"
+                style="display: flex; align-items: center;">
+                <img src="images/sf-summit.svg" alt="Snowflake Summit" class="logo-img">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="#brunch">Brunch</a>
+            <a href="#why">Why BOT</a>
+            <a href="#proof">Proof</a>
+            <a href="#hosts">Hosts</a>
+            <a href="#contact" class="nav-cta">Request Invite</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"></span>June 1 – 4, 2026 · San Francisco</div>
+            <h1>We're at <span class="cyan-accent">Snowflake Summit.</span><br>Let's solve <span class="accent">the
+                    math.</span></h1>
+            <p class="hero-sub">Your Snowflake practice is growing faster than your delivery team. That gap has a cost —
+                in margin, in client trust, in missed deals. We've been in this room before. Come talk to us.</p>
+            <div class="hero-ctas">
+                <a href="#brunch" class="btn btn-primary">Join Us at Brunch</a>
+                <a href="#contact" class="btn btn-outline">Book 1:1 Meeting</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- EVENT BANNER -->
+    <div class="event-banner reveal" id="brunch">
+        <div>
+            <p
+                style="font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan-light);margin-bottom:.5rem">
+                Private Gathering</p>
+            <h2>Brunch with BOT Consulting at Cavalier</h2>
+            <p class="sub">A private gathering for Snowflake ecosystem leaders, delivery executives, and AI/data
+                operators navigating the next era of enterprise intelligence.</p>
+            <div class="event-details">
+                <div class="event-detail">
+                    <div class="icon">📍</div><a href="https://share.google/R2CPgY8z9TN9Hn27R" target="_blank"
+                        rel="noopener noreferrer"
+                        style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Cavalier, San
+                        Francisco</a>
+                </div>
+                <div class="event-detail">
+                    <div class="icon">📅</div>June 3, 2026
+                </div>
+                <div class="event-detail">
+                    <div class="icon">🕐</div>12:00 PM – 2:00 PM
+                </div>
+            </div>
+        </div>
+        <div class="event-right">
+            <p>No slides. No sponsor logos. Just a room of Snowflake partner leaders navigating the same challenge —
+                scaling delivery without scaling cost.</p>
+            <p>Erik Duffield (Hakkoda/IBM CEO) and Corey Ariss (COO) will be in the room. So will Manpreet Singh.</p>
+            <a href="#contact" class="btn btn-primary" style="margin-top:.5rem">Request an Invite</a>
+        </div>
+    </div>
+
+    <!-- WHY -->
+    <section id="why">
+        <p class="section-label reveal">Why Meet BOT at Summit?</p>
+        <h2 class="section-title reveal reveal-d1">We're not building offshore teams.<br>We're building <span
+                style="color:var(--cyan)">Snowflake capability centers.</span></h2>
+        <p class="section-desc reveal reveal-d2">As Snowflake partners move beyond traditional data engineering into
+            AI-led enterprise transformation, delivery models are changing fast. At BOT, we help high-growth Snowflake
+            partners scale globally aligned Data & AI teams through our Build–Operate–Transfer model.</p>
+
+        <div class="why-grid">
+            <div class="why-card reveal">
+                <h3><span class="card-accent" style="background:var(--cyan)"></span>Talent at Speed</h3>
+                <p>SnowPro-certified consultants built and deployed in weeks, not quarters. We don't poach your
+                    competitors' engineers — we build a pipeline from scratch.</p>
+                <div class="card-stat"><span class="num">100+</span><span class="label">SnowPro-certified consultants
+                        scaled for Hakkoda</span></div>
+            </div>
+            <div class="why-card reveal reveal-d1">
+                <h3><span class="card-accent" style="background:var(--orange)"></span>AI Labs, Not Just Engineers</h3>
+                <p>Migration Copilots. Sigma BI Analyst. Data Quality AI Tools. Our Jaipur AI Labs team builds
+                    production-grade assets that win deals — not just deliver them.</p>
+                <div class="card-stat"><span class="num">6 weeks</span><span class="label">billable ramp-up
+                        timelines</span></div>
+            </div>
+            <div class="why-card reveal reveal-d2">
+                <h3><span class="card-accent" style="background:var(--teal-mid)"></span>Culture That Sticks</h3>
+                <p>The Hakkoda India team is called "Hakkoda India" — not "the vendor." Culture is the moat, not the
+                    afterthought.</p>
+                <div class="card-stat"><span class="num">90%</span><span class="label">voluntary retention vs. 75–80%
+                        industry avg</span></div>
+            </div>
+            <div class="why-card reveal reveal-d3">
+                <h3><span class="card-accent" style="background:var(--orange-light)"></span>Deep Vertical Expertise</h3>
+                <p>7+ deep industry verticals. Follow-the-Sun delivery across US, EMEA, and India with cross-timezone
+                    allocation efficiency.</p>
+                <div class="card-stat"><span class="num">33%</span><span class="label">of global delivery hours driven
+                        from India</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-section full-width">
+        <div class="stats-grid">
+            <div class="stat reveal">
+                <div class="stat-num"><span class="highlight">100+</span></div>
+                <div class="stat-label">SnowPro-Certified Consultants</div>
+            </div>
+            <div class="stat reveal reveal-d1">
+                <div class="stat-num"><span class="highlight">6 weeks</span></div>
+                <div class="stat-label">Hire to Billable</div>
+            </div>
+            <div class="stat reveal reveal-d2">
+                <div class="stat-num"><span class="highlight">85%</span></div>
+                <div class="stat-label">Utilisation Rate</div>
+            </div>
+            <div class="stat reveal reveal-d3">
+                <div class="stat-num"><span class="highlight">90%</span></div>
+                <div class="stat-label">Voluntary Retention</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROOF -->
+    <section class="proof-section" id="proof">
+        <p class="section-label reveal">The Proof</p>
+        <h2 class="section-title reveal reveal-d1">Hakkoda → IBM:<br>The Story Behind the Acquisition</h2>
+        <div class="proof-grid">
+            <div class="reveal reveal-d2">
+                <p class="proof-narrative">Hakkoda was a fast-growing Snowflake services leader. Their clients wanted an
+                    India team. They needed speed. <strong>BOT delivered.</strong></p>
+                <p class="proof-narrative" style="margin-top:1rem">In 18 months, we built a team that ran a third of
+                    Hakkoda's global delivery. An AI Labs team building competitive differentiators. A culture so
+                    integrated, IBM kept it intact through the acquisition.</p>
+                <p class="proof-narrative" style="margin-top:1rem"><strong>The Jaipur GDC wasn't a line item in the
+                        deal. It was a reason for it.</strong></p>
+                <a href="#contact" class="btn btn-outline" style="margin-top:2rem">Read Full Case Study →</a>
+            </div>
+            <div class="timeline reveal reveal-d3">
+                <div class="tl-item">
+                    <div class="tl-phase">The Build</div>
+                    <div class="tl-text">0 → 60 FTEs in 90 days. SnowPro Core certification for 100% of technical hires.
+                        Plug-and-play SEZ facility.</div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-phase">The Operate</div>
+                    <div class="tl-text">Follow-the-Sun delivery. 85% utilisation. AI Labs building Migration Copilots
+                        with 30–40% productivity gains.</div>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-phase">The Acquire</div>
+                    <div class="tl-text">IBM acquires Hakkoda. Leadership retained. Contracts transitioned. The GDC
+                        becomes the crown jewel.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section>
+        <p class="section-label reveal">In Their Words</p>
+        <h2 class="section-title reveal reveal-d1">Don't take our word for it.</h2>
+        <div class="testimonials">
+            <div class="testimonial reveal">
+                <blockquote>"What BOT gave us was speed and agility. We didn't have time to go through legal and
+                    accounting and regulatory things. It allowed us to work very quickly to grow with our clients at
+                    super high quality."</blockquote>
+                <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem;">
+                    <a href="https://www.linkedin.com/in/erikduffield/" target="_blank" rel="noopener noreferrer"
+                        style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--cyan); display: block;">
+                        <img src="images/erik.webp" alt="Erik Duffield"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </a>
+                    <cite style="margin-top: 0;">Erik Duffield — CEO, Hakkoda (IBM)</cite>
+                </div>
+            </div>
+            <div class="testimonial reveal reveal-d1">
+                <blockquote>"BOT built a GDC that felt like Hakkoda from Day 1 — same culture, higher delivery
+                    benchmarks. Jaipur became our top-performing hub and a key asset in IBM's acquisition."</blockquote>
+                <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem;">
+                    <a href="https://www.linkedin.com/in/corey-ariss-21479529/" target="_blank"
+                        rel="noopener noreferrer"
+                        style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--orange); display: block;">
+                        <img src="images/corey.webp" alt="Corey Ariss"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </a>
+                    <cite style="margin-top: 0;">Corey Ariss — COO, Hakkoda (IBM)</cite>
+                </div>
+            </div>
+            <div class="testimonial reveal reveal-d2">
+                <blockquote>"Walking in, it wasn't like two entities. It was a single entity working together to further
+                    our customers' goals."</blockquote>
+                <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem;">
+                    <a href="https://www.linkedin.com/in/robertjohnhardin/" target="_blank" rel="noopener noreferrer"
+                        style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--teal-dark); display: block;">
+                        <img src="images/bob.webp" alt="Bob" style="width: 100%; height: 100%; object-fit: cover;">
+                    </a>
+                    <cite style="margin-top: 0;">Robert Hardin — EVP Strategic Accounts, Hakkoda(IBM)</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOSTS -->
+    <section id="hosts">
+        <p class="section-label reveal">Meet the Hosts</p>
+        <h2 class="section-title reveal reveal-d1">The people behind the build.</h2>
+        <div class="hosts-grid">
+            <div class="host-card reveal">
+                <a href="https://www.linkedin.com/in/botmanpreetsingh/" target="_blank" rel="noopener noreferrer"
+                    class="host-avatar"
+                    style="padding: 0; overflow: hidden; border: 2px solid var(--orange); background: transparent; text-decoration: none;">
+                    <img src="images/0109%20-%20Manpreet%20Singh.png" alt="Manpreet Singh"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </a>
+                <h3>Manpreet Singh</h3>
+                <p class="role">CEO & Co-Founder, BOT Consulting</p>
+                <p>Manpreet has spent years building and scaling Global Capability Centers for high-growth technology
+                    companies. Under his leadership, BOT has helped companies rapidly establish culturally aligned
+                    delivery organizations across Data, AI, Cloud, and Enterprise Platforms.</p>
+            </div>
+            <div class="host-card reveal reveal-d1">
+                <a href="https://www.linkedin.com/in/ajai-pal-singh-udawat/" target="_blank" rel="noopener noreferrer"
+                    class="host-avatar"
+                    style="padding: 0; overflow: hidden; border: 2px solid var(--teal-dark); background: transparent; text-decoration: none;">
+                    <img src="images/ajai.jpeg" alt="Ajai Pal Singh"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </a>
+                <h3>Ajai Pal Singh</h3>
+                <p class="role">Senior Director, Data Engineering & Snowflake Practice Leader</p>
+                <p>Ajai leads BOT's Snowflake and AI engineering capability, including the Hakkoda India team and BOT's
+                    Snowflake AI Lab in Jaipur. His work focuses on building scalable enterprise data teams, AI-driven
+                    workflows, and next-generation modernization accelerators.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <p class="section-label reveal">Let's Continue the Conversation</p>
+        <h2 class="section-title reveal reveal-d1" style="max-width:700px">Whether you're scaling a Snowflake practice,
+            exploring AI-native delivery, or building a globally integrated data org — <span
+                style="color:var(--orange)">we'd love to connect.</span></h2>
+        <p class="section-desc reveal reveal-d2">Brunch seats are limited. Book your spot or schedule a private
+            conversation with our founders.</p>
+        <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:2rem"
+            class="reveal reveal-d3">
+            <a href="mailto:tanishka@botconsulting.io?subject=Snowflake Summit Brunch RSVP"
+                class="btn btn-primary">Request Brunch Invite</a>
+            <a href="mailto:tanishka@botconsulting.io?subject=1:1 Meeting at Snowflake Summit"
+                class="btn btn-outline">Book 1:1 Meeting</a>
+        </div>
+    </section>
+
+    <script>
+        const obs = new IntersectionObserver(e => { e.forEach(el => { if (el.isIntersecting) { el.target.classList.add('visible'); obs.unobserve(el.target) } }) }, { threshold: .08, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }) }) });
+    </script>
+</body>
+
+</html>
