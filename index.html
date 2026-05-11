@@ -84,14 +84,24 @@
             left: 0;
             width: 100%;
             z-index: 100;
-            padding: 1rem 2.5rem;
+            padding: 1rem 0;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             backdrop-filter: blur(16px);
             background: rgba(250, 245, 238, .85);
             border-bottom: 1px solid var(--border);
             transition: all .3s
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 clamp(1.5rem, 5vw, 3rem);
+            margin: 0 auto;
         }
 
         .nav-logo {
@@ -155,7 +165,7 @@
 
         @media(max-width:768px) {
             nav {
-                padding: 1rem 1.25rem;
+                padding: 1rem 0;
             }
 
             .nav-links {
@@ -173,13 +183,22 @@
 
         /* --- HERO --- */
         .hero {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 8rem clamp(2rem, 6vw, 6rem) 4rem;
+            padding: 7rem 0 3.5rem;
             position: relative;
             overflow: hidden
+        }
+
+        .hero-inner {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 5vw, 3rem);
+            position: relative;
+            z-index: 1;
         }
 
         /* BOT gradient blurs — teal/cyan top-right, orange bottom-left like Year in Review */
@@ -224,7 +243,6 @@
         .hero-content {
             max-width: 750px;
             position: relative;
-            z-index: 1
         }
 
         .hero-badge {
@@ -362,7 +380,7 @@
 
         /* --- SECTIONS --- */
         section {
-            padding: clamp(4rem, 8vw, 7rem) clamp(2rem, 6vw, 6rem);
+            padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 3rem);
             max-width: 1200px;
             margin: 0 auto
         }
@@ -400,11 +418,18 @@
         }
 
         /* --- EVENT BANNER --- */
+        .event-banner-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 5vw, 3rem);
+            width: 100%;
+        }
+
         .event-banner {
             background: linear-gradient(135deg, var(--teal-dark), var(--teal), var(--teal-mid));
             border-radius: 20px;
             padding: clamp(2.5rem, 5vw, 4rem);
-            margin: 0 clamp(2rem, 6vw, 6rem);
+            margin: 0;
             position: relative;
             overflow: hidden;
             display: grid;
@@ -416,7 +441,6 @@
         @media(max-width:768px) {
             .event-banner {
                 grid-template-columns: 1fr;
-                margin: 0 1.5rem
             }
         }
 
@@ -885,70 +909,86 @@
 
     <!-- NAV -->
     <nav>
-        <div class="nav-logo" style="gap: 1rem;">
-            <a href="https://www.botconsulting.io/" target="_blank" rel="noopener noreferrer"
-                style="display: flex; align-items: center;">
-                <img src="images/bot-logo.svg" alt="BOT Consulting" class="logo-img">
-            </a>
-            <span style="color: var(--text-dim); font-weight: 400; font-size: 1.2rem; line-height: 1;">×</span>
-            <a href="https://www.snowflake.com/en/summit/" target="_blank" rel="noopener noreferrer"
-                style="display: flex; align-items: center;">
-                <img src="images/sf-summit.svg" alt="Snowflake Summit" class="logo-img">
-            </a>
-        </div>
-        <div class="nav-links">
-            <a href="#brunch">Brunch</a>
-            <a href="#why">Why BOT</a>
-            <a href="#proof">Proof</a>
-            <a href="#hosts">Hosts</a>
-            <a href="#contact" class="nav-cta">Request Invite</a>
+        <div class="nav-inner">
+            <div class="nav-logo" style="gap: 1rem;">
+                <a href="https://www.botconsulting.io/" target="_blank" rel="noopener noreferrer"
+                    style="display: flex; align-items: center;">
+                    <img src="images/bot-logo.svg" alt="BOT Consulting" class="logo-img">
+                </a>
+                <span style="color: var(--text-dim); font-weight: 400; font-size: 1.2rem; line-height: 1;">|</span>
+                <a href="https://www.snowflake.com/en/summit/" target="_blank" rel="noopener noreferrer"
+                    style="display: flex; align-items: center;">
+                    <img src="images/sf-summit.svg" alt="Snowflake Summit" class="logo-img">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="#brunch">Brunch</a>
+                <a href="#why">Why BOT</a>
+                <a href="#proof">Proof</a>
+                <a href="#hosts">Hosts</a>
+                <a href="#contact" class="nav-cta">Request Invite</a>
+            </div>
         </div>
     </nav>
 
     <!-- HERO -->
     <header class="hero">
-        <div class="hero-content">
-            <div class="hero-badge"></span>June 1 – 4, 2026 · San Francisco</div>
-            <h1>We're at <span class="cyan-accent">Snowflake Summit.</span><br>Let's solve <span class="accent">the
-                    math.</span></h1>
-            <p class="hero-sub">Your Snowflake practice is growing faster than your delivery team. That gap has a cost —
-                in margin, in client trust, in missed deals. We've been in this room before. Come talk to us.</p>
-            <div class="hero-ctas">
-                <a href="#brunch" class="btn btn-primary">Join Us at Brunch</a>
-                <a href="#contact" class="btn btn-outline">Book 1:1 Meeting</a>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge"><span class="pulse"></span>June 1 – 4, 2026 · San Francisco</div>
+                <h1>We're coming to <span class="cyan-accent">Snowflake Summit.</span></h1>
+                <p class="hero-sub">Your Snowflake practice is growing faster than your delivery team. That gap has a
+                    cost —
+                    in margin, in client trust, in missed deals. We've been in this room before. Come talk to us.</p>
+                <div class="hero-ctas">
+                    <a href="#brunch" class="btn btn-primary">Join Us at Brunch</a>
+                    <a href="#contact" class="btn btn-outline">Book 1:1 Meeting</a>
+                </div>
+                <div style="margin-top: 3.5rem; border-top: 1px solid var(--border); padding-top: 2rem; max-width: 580px;" class="reveal reveal-d4">
+                    <p style="font-size: .75rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 1rem;">Trusted By</p>
+                    <div style="display: flex; gap: 1.5rem; align-items: center;">
+                        <a href="https://hakkoda.io/" target="_blank" rel="noopener noreferrer" style="background: var(--white); padding: 0.75rem 1.5rem; border-radius: 8px; border: 1px solid rgba(24, 57, 68, .05); box-shadow: 0 4px 12px rgba(24, 57, 68, .03); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(24, 57, 68, .06)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(24, 57, 68, .03)';">
+                            <img src="images/Hakkoda_black.svg" alt="Hakkoda" style="height: 28px; width: auto; opacity: 0.85;">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- EVENT BANNER -->
-    <div class="event-banner reveal" id="brunch">
-        <div>
-            <p
-                style="font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan-light);margin-bottom:.5rem">
-                Private Gathering</p>
-            <h2>Brunch with BOT Consulting at Cavalier</h2>
-            <p class="sub">A private gathering for Snowflake ecosystem leaders, delivery executives, and AI/data
-                operators navigating the next era of enterprise intelligence.</p>
-            <div class="event-details">
-                <div class="event-detail">
-                    <div class="icon">📍</div><a href="https://share.google/R2CPgY8z9TN9Hn27R" target="_blank"
-                        rel="noopener noreferrer"
-                        style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Cavalier, San
-                        Francisco</a>
-                </div>
-                <div class="event-detail">
-                    <div class="icon">📅</div>June 3, 2026
-                </div>
-                <div class="event-detail">
-                    <div class="icon">🕐</div>12:00 PM – 2:00 PM
+    <div class="event-banner-wrapper reveal" id="brunch">
+        <div class="event-banner">
+            <div>
+                <p
+                    style="font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan-light);margin-bottom:.5rem">
+                    Exclusive Brunch</p>
+                <h2>Brunch with BOT Consulting at Cavalier</h2>
+                <p class="sub">A private gathering for Snowflake ecosystem leaders, delivery executives, and AI/data
+                    operators navigating the next era of enterprise intelligence.</p>
+                <div class="event-details">
+                    <div class="event-detail">
+                        <div class="icon">📍</div><a href="https://share.google/R2CPgY8z9TN9Hn27R" target="_blank"
+                            rel="noopener noreferrer"
+                            style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Cavalier,
+                            San
+                            Francisco</a>
+                    </div>
+                    <div class="event-detail">
+                        <div class="icon">📅</div>June 3, 2026
+                    </div>
+                    <div class="event-detail">
+                        <div class="icon">🕐</div>12:00 PM – 2:00 PM
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="event-right">
-            <p>No slides. No sponsor logos. Just a room of Snowflake partner leaders navigating the same challenge —
-                scaling delivery without scaling cost.</p>
-            <p>Erik Duffield (Hakkoda/IBM CEO) and Corey Ariss (COO) will be in the room. So will Manpreet Singh.</p>
-            <a href="#contact" class="btn btn-primary" style="margin-top:.5rem">Request an Invite</a>
+            <div class="event-right">
+                <p>No slides. No sponsor logos. Just a room of Snowflake partner leaders navigating the same challenge —
+                    scaling delivery without scaling cost.</p>
+                <p>Erik Duffield (Hakkoda/IBM CEO) and Corey Ariss (COO) will be in the room. So will Manpreet Singh.
+                </p>
+                <a href="#contact" class="btn btn-primary" style="margin-top:.5rem">Request an Invite</a>
+            </div>
         </div>
     </div>
 
@@ -993,7 +1033,7 @@
         </div>
     </section>
 
-    <!-- STATS -->
+    <!-- STATS
     <div class="stats-section full-width">
         <div class="stats-grid">
             <div class="stat reveal">
@@ -1013,7 +1053,7 @@
                 <div class="stat-label">Voluntary Retention</div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- PROOF -->
     <section class="proof-section" id="proof">
@@ -1028,21 +1068,22 @@
                     integrated, IBM kept it intact through the acquisition.</p>
                 <p class="proof-narrative" style="margin-top:1rem"><strong>The Jaipur GDC wasn't a line item in the
                         deal. It was a reason for it.</strong></p>
-                <a href="#contact" class="btn btn-outline" style="margin-top:2rem">Read Full Case Study →</a>
+                <a href="https://www.botconsulting.io/hakkoda" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-outline" style="margin-top:2rem">Read Full Case Study →</a>
             </div>
             <div class="timeline reveal reveal-d3">
                 <div class="tl-item">
-                    <div class="tl-phase">The Build</div>
+                    <div class="tl-phase">Build</div>
                     <div class="tl-text">0 → 60 FTEs in 90 days. SnowPro Core certification for 100% of technical hires.
                         Plug-and-play SEZ facility.</div>
                 </div>
                 <div class="tl-item">
-                    <div class="tl-phase">The Operate</div>
+                    <div class="tl-phase">Operate</div>
                     <div class="tl-text">Follow-the-Sun delivery. 85% utilisation. AI Labs building Migration Copilots
                         with 30–40% productivity gains.</div>
                 </div>
                 <div class="tl-item">
-                    <div class="tl-phase">The Acquire</div>
+                    <div class="tl-phase">Transfer</div>
                     <div class="tl-text">IBM acquires Hakkoda. Leadership retained. Contracts transitioned. The GDC
                         becomes the crown jewel.</div>
                 </div>
@@ -1065,7 +1106,7 @@
                         <img src="images/erik.webp" alt="Erik Duffield"
                             style="width: 100%; height: 100%; object-fit: cover;">
                     </a>
-                    <cite style="margin-top: 0;">Erik Duffield — CEO, Hakkoda (IBM)</cite>
+                    <cite style="margin-top: 0;"><a href="https://www.linkedin.com/in/erikduffield/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Erik Duffield</a> — CEO, Hakkoda (IBM)</cite>
                 </div>
             </div>
             <div class="testimonial reveal reveal-d1">
@@ -1078,7 +1119,7 @@
                         <img src="images/corey.webp" alt="Corey Ariss"
                             style="width: 100%; height: 100%; object-fit: cover;">
                     </a>
-                    <cite style="margin-top: 0;">Corey Ariss — COO, Hakkoda (IBM)</cite>
+                    <cite style="margin-top: 0;"><a href="https://www.linkedin.com/in/corey-ariss-21479529/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Corey Ariss</a> — COO, Hakkoda (IBM)</cite>
                 </div>
             </div>
             <div class="testimonial reveal reveal-d2">
@@ -1089,7 +1130,7 @@
                         style="flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--teal-dark); display: block;">
                         <img src="images/bob.webp" alt="Bob" style="width: 100%; height: 100%; object-fit: cover;">
                     </a>
-                    <cite style="margin-top: 0;">Robert Hardin — EVP Strategic Accounts, Hakkoda(IBM)</cite>
+                    <cite style="margin-top: 0;"><a href="https://www.linkedin.com/in/robertjohnhardin/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Robert Hardin</a> — EVP Strategic Accounts, Hakkoda(IBM)</cite>
                 </div>
             </div>
         </div>
@@ -1105,9 +1146,9 @@
                     class="host-avatar"
                     style="padding: 0; overflow: hidden; border: 2px solid var(--orange); background: transparent; text-decoration: none;">
                     <img src="images/0109%20-%20Manpreet%20Singh.png" alt="Manpreet Singh"
-                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; object-position: center 20%;">
                 </a>
-                <h3>Manpreet Singh</h3>
+                <h3><a href="https://www.linkedin.com/in/botmanpreetsingh/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Manpreet Singh</a></h3>
                 <p class="role">CEO & Co-Founder, BOT Consulting</p>
                 <p>Manpreet has spent years building and scaling Global Capability Centers for high-growth technology
                     companies. Under his leadership, BOT has helped companies rapidly establish culturally aligned
@@ -1118,9 +1159,9 @@
                     class="host-avatar"
                     style="padding: 0; overflow: hidden; border: 2px solid var(--teal-dark); background: transparent; text-decoration: none;">
                     <img src="images/ajai.jpeg" alt="Ajai Pal Singh"
-                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; object-position: center 20%;">
                 </a>
-                <h3>Ajai Pal Singh</h3>
+                <h3><a href="https://www.linkedin.com/in/ajai-pal-singh-udawat/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Ajai Pal Singh</a></h3>
                 <p class="role">Senior Director, Data Engineering & Snowflake Practice Leader</p>
                 <p>Ajai leads BOT's Snowflake and AI engineering capability, including the Hakkoda India team and BOT's
                     Snowflake AI Lab in Jaipur. His work focuses on building scalable enterprise data teams, AI-driven
